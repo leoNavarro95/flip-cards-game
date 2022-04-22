@@ -1,5 +1,5 @@
 <template>
     <div class="bg-blue-500 text-xl">
-        Home
+        Authors
     </div>
 </template>

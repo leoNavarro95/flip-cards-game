@@ -1,13 +1,15 @@
 import { createRouter, createWebHistory  } from 'vue-router'
 
-import Home from '../modules/flip-game/components/Home.vue'
-import About from '../modules/flip-game/components/About.vue'
+import Posts from '../modules/flip-game/pages/Posts.vue'
+import Authors from '../modules/flip-game/pages/Authors.vue'
+import Tests from '../modules/flip-game/pages/Tests.vue'
 
 const router = createRouter({
     history: createWebHistory(),
     routes:[
-        {path:'/', name: 'Home' ,component: Home},
-        {path:'/about', name: 'About' ,component: About},
+        {path:'/', name: 'Posts' ,component: Posts},
+        {path:'/Authors', name: 'Authors' ,component: Authors},
+        {path:'/Tests', name: 'Tests' ,component: Tests},
     ]
 })
 
