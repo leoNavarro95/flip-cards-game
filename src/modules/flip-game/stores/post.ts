@@ -9,41 +9,58 @@ interface Post{
 
 
 export const usePostStore = defineStore({
+  // store unique id for vue devtools on browser
   id: 'post',
+  
+  // state definition: 
+  // posts:   for holding the fetched posts
+  // post:    for holding the current post
+  // loading: for holding the loading state
+  // error:   for holding the error, if such exists
   state: () => ({
     posts: [],
     post: null,
     loading: false,
     error: null
   }),
+
   getters: {
+    // the posts a given author has written
     getPostsPerAuthor: (state) => {
       return (authorId: number) => state.posts.filter((post: Post) => post.userId === authorId)
     }
   }, 
-  actions: {
-    async fetchPosts() {
-      this.posts = []
-      this.loading = true
+  // actions can be asynchronous
+  actions: {  
+
+    // fetch all posts
+    async fetchPosts() {     
+      this.posts = []      // reset posts array
+      this.loading = true  // loading - we are fetching data
+
       try {
         this.posts = await fetch('https://jsonplaceholder.typicode.com/posts')
-        .then((response) => response.json()) 
+                            .then((response) => response.json()) 
       } catch (error: any) {
         this.error = error
       } finally {
-        this.loading = false
+        this.loading = false  //set back loading to false - we get data
       }
     },
+    
+    //fetch post by id
     async fetchPost(id: number) {
-      this.post = null
-      this.loading = true
+
+      this.post = null      // reset current post
+      this.loading = true   // loading - we are fetching 
+      
       try {
         this.post = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-        .then((response) => response.json())
+                          .then((response) => response.json())
       } catch (error: any) {
         this.error = error
       } finally {
-        this.loading = false
+        this.loading = false  //set back loading to false - we get data
       }
     }
   }
