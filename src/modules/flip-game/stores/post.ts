@@ -35,7 +35,7 @@ export const usePostStore = defineStore({
 
     // fetch all posts
     async fetchPosts() {     
-      this.posts = []      // reset posts array
+      this.posts = [{} as Post]     // reset posts array
       this.loading = true  // loading - we are fetching data
 
       try {
