@@ -18,8 +18,8 @@ export const usePostStore = defineStore({
   // loading: for holding the loading state
   // error:   for holding the error, if such exists
   state: () => ({
-    posts: [],
-    post: null,
+    posts: [{} as Post],
+    post: {} as Post,
     loading: false,
     error: null
   }),
@@ -51,7 +51,7 @@ export const usePostStore = defineStore({
     //fetch post by id
     async fetchPost(id: number) {
 
-      this.post = null      // reset current post
+      this.post = {} as Post      // reset current post
       this.loading = true   // loading - we are fetching 
       
       try {
