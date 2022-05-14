@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-    import PostsView from '../views/PostsView.vue';
+    import SinglePostView from '../views/SinglePostView.vue';
 </script>
 
 <template>
     <div class=" mx-5 p-3 rounded-b-lg bg-violet-500 text-5xl font-sans font-extralight">
-        Posts
+        Post
     </div>
-    <PostsView/>
+    <SinglePostView/>
 </template>

@@ -21,7 +21,7 @@ export const usePostStore = defineStore({
     posts: [{} as Post],
     post: {} as Post,
     loading: false,
-    error: null
+    error: {} as any
   }),
 
   getters: {
