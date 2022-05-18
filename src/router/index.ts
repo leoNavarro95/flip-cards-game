@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory  } from 'vue-router'
 
 import Posts from '../modules/flip-game/pages/Posts.vue'
-import Authors from '../modules/flip-game/pages/Authors.vue'
 import Tests from '../modules/flip-game/pages/Tests.vue'
 import SinglePostView from '../modules/flip-game/pages/SinglePostPage.vue'
 
@@ -16,7 +15,8 @@ const router = createRouter({
         {
             path:'/authors', 
             name: 'Authors',
-            component: Authors
+            //this is lazy loaded
+            component: () => import('../modules/flip-game/pages/Authors.vue')
         },
         {
             path:'/tests', 
