@@ -9,7 +9,7 @@ import { RouterLink ,RouterView } from 'vue-router';
   
   <div class="m-5 p-3 flex flex-grap gap-4 justify-center">
     <router-link class="hover:text-green-500" to="/">Posts</router-link>
-    <router-link class="hover:text-green-500" to="/Authors">Authors</router-link>
+    <router-link class="hover:text-green-500" to="/authors">Authors</router-link>
     <router-link class="hover:text-green-500" to="/tests">Tailwind Tests</router-link>
   </div>
 
