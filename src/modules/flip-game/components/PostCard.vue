@@ -1,17 +1,18 @@
 <script lang="ts" setup>
   import { RouterLink } from 'vue-router'
   import { storeToRefs } from 'pinia'
-  import { useCommentStore } from '../stores/comment'
-  import Comment from './Comment.vue'
+  
+  
 
-  defineProps(['post', 'author'])
-
-  const { getPostComments } = storeToRefs(useCommentStore())
-  const { fetchComments } = useCommentStore()
-
-  const firstLetterUpperCase = (str: string) => `${str?.charAt(0).toUpperCase()}${str?.substring(1)}` 
-
-  fetchComments()
+  defineProps(['post', 'author', 'numComments'])
+// using Object syntax
+// const props = defineProps({
+//   post: {type: string},
+//   author: {type: string},
+//   numComments as number,
+// })
+  const firstLetterUpperCase = (str: string) => `${str?.charAt(0).toUpperCase()}${str?.substring(1)}`
+   
 </script>
 
 <template>
@@ -27,13 +28,8 @@
         <RouterLink class="hover:text-blue-800 font-bold underline" :to="`/author/${author.username}`">
             {{ author.name }}
         </RouterLink>
-            <span> | Comments: {{ getPostComments.length }}</span>
+            <span> | Comments: {{ numComments }}</span>
         </p>
     </div>
     
-    <div class="p-5">
-        <div class="mt-2 mb-0 w-full border-t-2 border-violet-400"></div>
-        <h3 class="font-sans font-normal text-2xl text-center bg-violet-100">Comments:</h3>
-        <comment :comments="getPostComments"></comment>
-    </div>
 </template>
