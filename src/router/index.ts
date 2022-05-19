@@ -19,6 +19,12 @@ const router = createRouter({
             component: () => import('../modules/flip-game/pages/Authors.vue')
         },
         {
+            path:'/author/:username', 
+            name: 'SingleAuthor',
+            //this is lazy loaded
+            component: () => import('../modules/flip-game/views/SingleAuthorView.vue')
+        },
+        {
             path:'/tests', 
             name: 'Tests',
             component: Tests
