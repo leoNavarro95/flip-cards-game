@@ -1,21 +1,32 @@
 <script lang="ts" setup>
+
+import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia'
 import { useAuthorStore } from '../stores/author'
 
 const { authors } = storeToRefs(useAuthorStore())
-
-console.log( authors.value.length )
-
 const { fetchAuthors } = useAuthorStore()
 
-fetchAuthors()
+let existData = ref(false)
+
+const getData = async () => {
+    await fetchAuthors()
+    existData.value = (authors.value.length > 1) 
+
+}
+
+onMounted(() => {
+    getData()
+})
+
 </script>
 
 <template>
-    <div v-if="authors.values.length <= 1"
+    <div v-if="!existData"
         class="text-2xl font-bold text-red-600"
-        >No data available :(</div>
+        >No data available :(
+        </div>
 
     <div v-else v-for="author in authors" :key="author.id"
     class="my-2 columns-2">

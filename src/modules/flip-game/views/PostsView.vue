@@ -1,4 +1,5 @@
 <script lang = 'ts' setup>
+  import { ref, onMounted } from 'vue';
   import { RouterLink } from 'vue-router'
   import { storeToRefs } from 'pinia'
   import { usePostStore } from '../stores/post'
@@ -11,9 +12,21 @@
 // actions can be destructured without any problem  
   const { fetchPosts } = usePostStore()
 
+
+  let existData = ref(false)
+
+  const fetchData = async () => {
+    await fetchPosts()
+    existData.value = (posts.value.length > 1)
+  }
+
+  onMounted(() => {
+    fetchData()
+  })
+
 // When using Composition API and call a function inside the setup() function, it’s
 // equivalent to using the created() Hook. So, we’ll have the posts before the component mounts.
-  fetchPosts()
+  // fetchPosts()
 </script>
 
 <template>
@@ -24,7 +37,7 @@
     
     <!-- Lista -->
     <div v-if="!loading" class="m-5 space-y-5 grid grid-cols-1 content-center font-sans text-xl">
-        <div v-if="!error" v-for="post in posts" :key="post.id"
+        <div v-if="existData" v-for="post in posts" :key="post.id"
             class="p-6 max-w-max rounded-lg border border-gray-200 shadow-md" 
             :class="(post.id % 2 == 0) ? 'bg-violet-300' : 'bg-violet-400'"
         >
