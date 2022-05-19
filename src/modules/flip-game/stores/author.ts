@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { usePostStore } from './post'
 
-interface User{
+export interface User{
     id: number,
     name: string,
     username: string,
