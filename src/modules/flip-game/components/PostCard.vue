@@ -2,7 +2,7 @@
   import { RouterLink } from 'vue-router'
   import { storeToRefs } from 'pinia'
   import { useCommentStore } from '../stores/comment'
-  import Comment from '../components/Comment.vue'
+  import Comment from './Comment.vue'
 
   defineProps(['post', 'author'])
 

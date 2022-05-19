@@ -3,7 +3,7 @@
   import { storeToRefs } from 'pinia'
   import { useAuthorStore } from '../stores/author'
   import { usePostStore } from '../stores/post'
-  import Post from '../components/Post.vue'
+  import PostCard from '../components/PostCard.vue'
 
   const route = useRoute() 
   const { getPostAuthor } = storeToRefs(useAuthorStore())
@@ -21,7 +21,7 @@
     <p v-if="loading">Loading post...</p>
     <p v-if="error">{{ error.message }}</p>
     <p v-if="post">
-      <post :post="post" :author="getPostAuthor"></post>
+      <PostCard :post="post" :author="getPostAuthor"></PostCard>
     </p>
   </div> 
 </template>
