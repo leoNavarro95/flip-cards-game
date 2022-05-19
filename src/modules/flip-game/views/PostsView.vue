@@ -20,11 +20,11 @@
   <main>
       
     <div v-if="loading" class="text-2xl font-bold text-gray-700">Loading posts...</div> 
-    <div v-if="error" class="text-2xl font-bold text-red-600 bg-">{{ error.message }}</div>
+    <div v-if="error" class="text-2xl font-bold text-red-600">{{ error.message }}</div>
     
     <!-- Lista -->
     <div v-if="!loading" class="m-5 space-y-5 grid grid-cols-1 content-center font-sans text-xl">
-        <div v-if="posts" v-for="post in posts" :key="post.id"
+        <div v-if="!error" v-for="post in posts" :key="post.id"
             class="p-6 max-w-max rounded-lg border border-gray-200 shadow-md" 
             :class="(post.id % 2 == 0) ? 'bg-violet-300' : 'bg-violet-400'"
         >
