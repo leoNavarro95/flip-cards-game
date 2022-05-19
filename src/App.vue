@@ -1,7 +1,11 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import { RouterLink ,RouterView } from 'vue-router';
+
+import { RouterLink ,RouterView, useRoute } from 'vue-router';
+
+const route = useRoute()
+
+console.log( route.path );
+
 
 </script>
 
@@ -12,6 +16,10 @@ import { RouterLink ,RouterView } from 'vue-router';
     <router-link class="hover:text-green-500" to="/authors">Authors</router-link>
     <router-link class="hover:text-green-500" to="/tests">Tailwind Tests</router-link>
   </div>
+
+  <div class=" mx-5 p-3 rounded-b-lg bg-violet-500 text-5xl font-sans font-extralight">
+        {{ route.name }}
+    </div>
 
   <router-view></router-view>
 

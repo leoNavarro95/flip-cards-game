@@ -20,7 +20,7 @@ const router = createRouter({
         },
         {
             path:'/author/:username', 
-            name: 'SingleAuthor',
+            name: 'Author Detail',
             //this is lazy loaded
             component: () => import('../modules/flip-game/views/SingleAuthorView.vue')
         },
@@ -31,7 +31,7 @@ const router = createRouter({
         },
         {
             path: '/post/:id',
-            name: 'SinglePost',
+            name: 'Post Detail',
             component: SinglePostView,
             props: ( route ) =>{
                 const postId = Number( route.params.id)

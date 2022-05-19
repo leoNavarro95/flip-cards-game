@@ -1,7 +1,6 @@
 <script lang="ts" setup>
   import { RouterLink } from 'vue-router'
-  import { storeToRefs } from 'pinia'
-  
+  import { firstLetterUpperCase } from '../helpers/strings'
   
 
   defineProps(['post', 'author', 'numComments'])
@@ -11,8 +10,7 @@
 //   author: {type: string},
 //   numComments as number,
 // })
-  const firstLetterUpperCase = (str: string) => `${str?.charAt(0).toUpperCase()}${str?.substring(1)}`
-   
+  
 </script>
 
 <template>
