@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory  } from 'vue-router'
 
-import Posts from '../modules/flip-game/pages/Posts.vue'
-import Tests from '../modules/flip-game/pages/Tests.vue'
-import SinglePostView from '../modules/flip-game/pages/SinglePostPage.vue'
+import MainPage from '../modules/flip-game/pages/MainPage.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -10,34 +8,8 @@ const router = createRouter({
         {
             path:'/', 
             name: 'Posts',
-            component: Posts
+            component: MainPage
         },
-        {
-            path:'/authors', 
-            name: 'Authors',
-            //this is lazy loaded
-            component: () => import('../modules/flip-game/pages/Authors.vue')
-        },
-        {
-            path:'/author/:username', 
-            name: 'Author Detail',
-            //this is lazy loaded
-            component: () => import('../modules/flip-game/views/SingleAuthorView.vue')
-        },
-        {
-            path:'/tests', 
-            name: 'Tests',
-            component: Tests
-        },
-        {
-            path: '/post/:id',
-            name: 'Post Detail',
-            component: SinglePostView,
-            props: ( route ) =>{
-                const postId = Number( route.params.id)
-                return isNaN( postId ) ? { postId: 1} : { postId }
-            }
-        }
     ]
 })
 
